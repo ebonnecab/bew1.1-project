@@ -1,9 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Rick and Morty Characters </title>
+</head>
+
+<body>
+
+<div class="header">  
 <h1>Characters</h1>
+</div>
 
-<a href="/character/new">Add Character</a>
+<p><a href="/character/new">Add Character</a></p>
 
-
+<div class="characters">
 {{#each character}}
-<h2>{{this.name}}</h2>
+<h2><a href="/character/{{this._id}}">{{this.name}}</a></h2>
 <small>{{this.episode}}</small>
 {{/each}}
+</div>
+
+</body>
+</html>

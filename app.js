@@ -45,11 +45,22 @@ app.get('/character/new', (req, res) => {
 app.post('/character', (req, res) => {
     Character.create(req.body).then((character) => {
         console.log(character);
-        res.redirect('/');
+        res.redirect(`/character/${character._id}`) 
+    }).catch((err) => {
+        console.log(err.message)
+    })
+})
+
+// SHOW
+app.get('/character/:id', (req, res) => {
+    Character.findById(req.params.id).then((character) => {
+        res.render('character-show', { character: character })
     }).catch((err) => {
         console.log(err.message);
     })
 })
+
+
 
 app.listen(3000, () => {
     console.log('App listening on port 3000!')
