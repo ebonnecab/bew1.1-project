@@ -1,5 +1,16 @@
+//Express.js
 const express = require('express')
 const app = express()
+
+//Mongoose
+const mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost/Rick-Morty');
+
+const Character = mongoose.model('Character', {
+    name: String,
+    episode: String
+});
+
 
 //Express handlebars template
 var exphbs = require('express-handlebars');
@@ -16,7 +27,13 @@ let character = [
 
 // ROOT ROUTE
 app.get('/', (req, res) => {
-    res.render('character-index', { character: character});
+    Character.find()
+        .then(character => {
+            res.render('character-index', { character: character});
+        })
+        .catch(err => {
+            console.log(err);
+        })
 })
 
 app.listen(3000, () => {
