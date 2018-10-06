@@ -1,0 +1,30 @@
+<!-- views/reviews-new.handlebars -->
+
+<form method="POST" action="/character">
+    <fieldset>
+        <legend>New Character</legend>
+        <!-- NAME -->
+        <p>
+            <label for="name">Name</label><br>
+            <input type="text" name="name" />
+        </p>
+        <!-- EPISODE -->
+        <p>
+            <label for="episode">Episode</label><br>
+            <input type="text" name="episode" />
+        </p>
+    </fieldset>
+
+    <!-- ORIGIN -->
+    <p>
+        <label for="origin-text">Origin</label><br>
+        <textarea id="origin-text" name="origin" rows="10" /></textarea>
+    </p>
+    </fieldset>
+
+    <!-- BUTTON -->
+    <p>
+        <button type="submit">Save Character</button>
+    </p>
+
+</form>

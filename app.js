@@ -8,7 +8,8 @@ mongoose.connect('mongodb://localhost/Rick-Morty');
 
 const Character = mongoose.model('Character', {
     name: String,
-    episode: String
+    episode: String,
+    origin: String
 });
 
 
@@ -18,14 +19,13 @@ var exphbs = require('express-handlebars');
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 
+// Initialize Body-Parser
+const bodyParser = require('body-parser');
 
-// Array of Rick and Morty Characters
-let character = [
-    { name: "Rick Sanchez", episode: "Episode 5" },
-    { name: "Pickle Rick", episode: "Episode 2"}
-]
+app.use(bodyParser.urlencoded({ extended: true }));
 
-// ROOT ROUTE
+
+// INDEX
 app.get('/', (req, res) => {
     Character.find()
         .then(character => {
@@ -34,6 +34,21 @@ app.get('/', (req, res) => {
         .catch(err => {
             console.log(err);
         })
+})
+
+// NEW
+app.get('/character/new', (req, res) => {
+    res.render('character-new', {});
+})
+
+// CREATE
+app.post('/character', (req, res) => {
+    Character.create(req.body).then((character) => {
+        console.log(character);
+        res.redirect('/');
+    }).catch((err) => {
+        console.log(err.message);
+    })
 })
 
 app.listen(3000, () => {
