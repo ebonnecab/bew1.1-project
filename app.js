@@ -2,6 +2,12 @@
 const express = require('express')
 const app = express()
 
+//methodOverride
+const methodOverride = require('method-override')
+
+// override with POST having ?_method=DELETE or ?_method=PUT
+app.use(methodOverride('_method'))
+
 //Mongoose
 const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/Rick-Morty');
@@ -61,6 +67,25 @@ app.get('/character/:id', (req, res) => {
 })
 
 
+// EDIT
+app.get('/character/:id/edit', (req, res) => {
+    Character.findById(req.params.id, function (err, character) {
+        res.render('character-edit', {
+            character: character
+        });
+    })
+})
+
+// UPDATE
+app.put('/character/:id', (req, res) => {
+    Character.findByIdAndUpdate(req.params.id, req.body)
+        .then(character => {
+            res.redirect(`/character/${character._id}`)
+        })
+        .catch(err => {
+            console.log(err.message)
+        })
+})
 
 app.listen(3000, () => {
     console.log('App listening on port 3000!')
