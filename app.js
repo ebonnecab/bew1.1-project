@@ -87,6 +87,16 @@ app.put('/character/:id', (req, res) => {
         })
 })
 
+// DELETE
+app.delete('/character/:id', function (req, res) {
+    console.log("DELETE character")
+    Character.findByIdAndRemove(req.params.id).then((review) => {
+        res.redirect('/');
+    }).catch((err) => {
+        console.log(err.message);
+    })
+})
+
 app.listen(3000, () => {
     console.log('App listening on port 3000!')
 })
