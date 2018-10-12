@@ -1,11 +1,16 @@
 const Character = require('../models/character')
 const express = require('express')
+//rick and morty api
+const tinyRick = require('rickmortyapi')
 router = express.Router()
 
 //INDEX
 router.get('/', (req, res) => {
-    res.render('character-index')
-    });
+    tinyRick.getCharacter().then(response => {
+        res.render('character-index', { character: response.results });
+    }).catch(console.error)
+    
+})
 
 // NEW
 router.get('/character/new', (req, res) => {
