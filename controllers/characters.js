@@ -13,7 +13,7 @@ router.get('/', (req, res) => {
 })
 
 // NEW
-router.get('/character/new', (req, res) => {
+router.get('/character/ne', (req, res) => {
         console.log(req.params);
 
         res.render('character-new', {});
@@ -31,7 +31,9 @@ router.post('/character', (req, res) => {
 
     // SHOW
     router.get('/character/:id', (req, res) => {
-        Character.findById(req.params.id).then((character) => {
+        var characterId = req.params.id
+        console.log(characterId)
+        tinyRick.getCharacter({id:characterId}).then((character) => {
             res.render('character-show', { 
                 character: character 
             })
