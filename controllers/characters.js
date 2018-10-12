@@ -12,13 +12,6 @@ router.get('/', (req, res) => {
     
 })
 
-// NEW
-router.get('/character/ne', (req, res) => {
-        console.log(req.params);
-
-        res.render('character-new', {});
-    });
-
 // CREATE
 router.post('/character', (req, res) => {
     Character.create(req.body).then((character) => {
