@@ -4,13 +4,16 @@
 <h1>Characters</h1>
 </div>
 
-<p><a href="/character/new">Add Character</a></p>
+{{!-- <p><a href="/character/new">Add Character</a></p> --}}
 
-<div class="characters">
+<div class="row">
+    
 {{#each character}}
-<a href="/character/{{this._id}}">{{this.name}}</a>
+<div class="col-sm-3">
+<h2><a href="/character/{{this._id}}">{{this.name}}</a></h2>
 <small>{{this.episode}}</small>
 <small>{{this.origin}}</small>
+</div>
 {{/each}}
 </div>
 
