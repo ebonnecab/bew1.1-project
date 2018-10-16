@@ -13,25 +13,12 @@ router.get('/', (req, res) => {
 })
 
     // SHOW
-<<<<<<< HEAD
-router.get('/character/:id', (req, res) => {
-    // find character
-    Character.findById(req.params.id).then(character => {
-        // find its quote
-        Quote.find({
-            characterId: req.params.id}).then(quote => {
-            // respond with the template with both values
-            res.render('character-show', {
-                character: character,
-                quote: quote
-=======
     router.get('/character/:id', (req, res) => {
         var characterId = req.params.id
         console.log(characterId)
         tinyRick.getCharacter({id:characterId}).then((character) => {
             res.render('character-show', { 
                 character: character 
->>>>>>> master
             })
         })
     }).catch((err) => {
