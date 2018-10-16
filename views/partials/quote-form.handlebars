@@ -1,0 +1,22 @@
+<form action="/character/quote" method="post">
+    <input type="hidden" value="{{character._id}}" name="characterId">
+    <fieldset>
+        <legend>Add Your Favorite Quote</legend>
+        <!-- TITLE -->
+        <div class="form-group">
+            <label for="quote-title">Title</label><br>
+            <input class="form-control" id="quote-title" type="text" name="title" placeholder="Title" />
+        </div>
+
+        <!-- DESCRIPTION -->
+        <div class="form-group">
+            <label for="quote-content">Quote</label><br>
+            <textarea class="form-control" id="quote-content" name="content" rows="10" placeholder="Your quote..." /></textarea>
+        </div>
+    </fieldset>
+
+    <!-- BUTTON -->
+    <div class="form-group">
+        <button class="btn btn-primary" type="submit">Save Quote</button>
+    </div>
+</form>

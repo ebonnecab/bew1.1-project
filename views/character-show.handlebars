@@ -15,16 +15,28 @@
             <h1>{{character.name}}</h1>
             <h2>{{character.episode}}</h2>
             <p>{{character.origin}}</p>
+        </div>
     </div>
 
     <p><a href="/character/{{character._id}}/edit">Edit</a></p>
 
     <!-- Delete button -->
+    <div class="row">
+        <div class="col-sm-6 col-sm-offset-3">
     <p>
         <form method="POST" action="/character/{{character._id}}?_method=DELETE">
             <button type="submit">Delete</button>
         </form>
     </p>
+    </div>
+    </div>
+
+    <hr>
+    <p>
+    <!-- Quote form -->
+    {{> quote-form}}
+    </p>
+
 
 </body>
 

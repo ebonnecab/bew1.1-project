@@ -1,7 +1,7 @@
 const Character = require('../models/character')
 const express = require('express')
 router = express.Router()
-
+const Quote = require('../models/quote')
 //INDEX
 router.get('/', (req, res) => {
     res.render('character-index')
@@ -25,15 +25,24 @@ router.post('/character', (req, res) => {
 })
 
     // SHOW
-    router.get('/character/:id', (req, res) => {
-        Character.findById(req.params.id).then((character) => {
-            res.render('character-show', { 
-                character: character 
+router.get('/character/:id', (req, res) => {
+    // find character
+    Character.findById(req.params.id).then(character => {
+        // find its quote
+        Quote.find({
+            characterId: req.params.id}).then(quote => {
+            // respond with the template with both values
+            res.render('character-show', {
+                character: character,
+                quote: quote
             })
-        }).catch((err) => {
-            console.log(err.message);
         })
-    })
+    }).catch((err) => {
+        // catch errors
+        console.log(err.message)
+    });
+});
+
 
     // EDIT
     router.get('/character/:id/edit', function(req, res) {

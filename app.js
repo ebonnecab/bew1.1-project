@@ -7,6 +7,10 @@ const methodOverride = require('method-override')
 const bodyParser = require('body-parser');
 //controller    
 const character = require('./controllers/characters.js');
+const quote = require('./controllers/quotes.js');
+// //models
+// const Quote = require('../models/quote')
+// const Character = require('../models/character')
 //mongoose
 const mongoose = require('mongoose');
 
@@ -24,6 +28,17 @@ app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 
 app.use('/', character)
+
+// app.use('/character/quote', quote)
+
+app.post('/character/quote', (req, res) => {
+    console.log(req.body)
+    // Quote.create(req.body).then(quote => {
+    //     res.redirect(`/character/${quote.CharacterId}`);
+    // }).catch((err) => {
+    //     console.log(err.message);
+    // });
+});
 
 app.listen(process.env.PORT || 3000, () => {
     console.log('App listening on port 3000!')
