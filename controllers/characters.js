@@ -12,16 +12,6 @@ router.get('/', (req, res) => {
     
 })
 
-// CREATE
-router.post('/character', (req, res) => {
-    Character.create(req.body).then((character) => {
-        console.log(character)
-        res.redirect(`/character/${character._id}`) // Redirect to character/:id
-    }).catch((err) => {
-        console.log(err.message)
-    })
-})
-
     // SHOW
     router.get('/character/:id', (req, res) => {
         var characterId = req.params.id

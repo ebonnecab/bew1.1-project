@@ -24,18 +24,6 @@ describe('Characters', () => {
             });
     });
 
-
-    // TEST CREATE
-    it('should create a SINGLE character on /character POST', (done) => {
-        chai.request(app)
-            .post('/character')
-            .send(sampleCharacter)
-            .end((err, res) => {
-                res.should.have.status(200);
-                res.should.be.html
-                done();
-            });
-    });
     // TEST SHOW
     it('should SHOW a single character on /character/<id> GET', (done) => {
         var character = new Character(sampleCharacter);
