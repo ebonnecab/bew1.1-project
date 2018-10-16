@@ -1,3 +1,4 @@
+
 //Express.js
 const express = require('express')
 const app = express()
@@ -29,6 +30,7 @@ app.set('view engine', 'handlebars');
 
 app.use('/', character)
 
+<<<<<<< HEAD
 // app.use('/character/quote', quote)
 
 app.post('/character/quote', (req, res) => {
@@ -43,6 +45,10 @@ app.post('/character/quote', (req, res) => {
 app.listen(process.env.PORT || 3000, () => {
     console.log('App listening on port 3000!')
 })
+=======
+const port = process.env.PORT || 3000;
+app.listen(port);
+>>>>>>> master
 
 
 
