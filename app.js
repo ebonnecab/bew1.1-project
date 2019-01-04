@@ -30,25 +30,8 @@ app.set('view engine', 'handlebars');
 
 app.use('/', character)
 
-<<<<<<< HEAD
-// app.use('/character/quote', quote)
-
-app.post('/character/quote', (req, res) => {
-    console.log(req.body)
-    // Quote.create(req.body).then(quote => {
-    //     res.redirect(`/character/${quote.CharacterId}`);
-    // }).catch((err) => {
-    //     console.log(err.message);
-    // });
-});
-
-app.listen(process.env.PORT || 3000, () => {
-    console.log('App listening on port 3000!')
-})
-=======
 const port = process.env.PORT || 3000;
 app.listen(port);
->>>>>>> master
 
 
 
